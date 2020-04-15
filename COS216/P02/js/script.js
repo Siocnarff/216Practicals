@@ -14,7 +14,7 @@ function setTracksFromPlaylist(id, number) {
         if (req.readyState === 4 && req.status === 200) {
             let json = JSON.parse(req.responseText);
             for (let i = 0; i < number; i++) {
-                getAlbumById(json.tracks.data[i].album.id, addTrackToGrid, json.tracks.data[i], true);
+                getAlbumById(json["tracks"].data[i]["album"].id, addTrackToGrid, json["tracks"].data[i], true);
             }
         }
     };
@@ -27,16 +27,16 @@ function setTracksFromPlaylist(id, number) {
 }
 
 function addTrackToGrid(albumJson, trackJson) {
-    const releaseDate = albumJson.release_date;
+    const releaseDate = albumJson["release_date"];
     let label = albumJson.label;
-    let genre = albumJson.genres.data[0].name;
+    let genre = albumJson["genres"].data[0].name;
     let r = rating();
     let br = barRating(r);
     document.getElementById("album_blocks").innerHTML += `
         <div class="album_block">
             <div class="cover_art">
                 <p class="release_date_over_album">${releaseDate}</p>
-                <img alt="Album Art" src="${albumJson.cover_medium}">                    
+                <img alt="Album Art" src="${albumJson["cover_medium"]}">                    
             </div> 
             <div class="album_info">
                 <div class="star_rating">
@@ -45,7 +45,7 @@ function addTrackToGrid(albumJson, trackJson) {
                 </div>
                 <div class="album_and_artist">
                     <p class="title">${trackJson.title}</h1>
-                    <p class="artist">${trackJson.artist.name}</h2>
+                    <p class="artist">${trackJson["artist"].name}</h2>
                 </div>
                 <div class="grey small_text padding_tm">
                     <p>${label}</p>
@@ -79,7 +79,7 @@ function searchTrending() {
                     break;
                 } else if (json.data[i] !== undefined) {
                     i++;
-                    getAlbumById(json.data[i].album.id, addTrackToGrid, json.data[i]);
+                    getAlbumById(json.data[i]["album"].id, addTrackToGrid, json.data[i]);
                 }
             }
         }
@@ -107,8 +107,8 @@ function setAlbumsFromPlaylist(id, number) {
         if (req.readyState === 4 && req.status === 200) {
             let json = JSON.parse(req.responseText);
             for (let i = 0; i < number; i++) {
-                if (133889172 !== json.tracks.data[i].album.id) {
-                    getAlbumById(json.tracks.data[i].album.id, addAlbumToGrid);
+                if (133889172 !== json["tracks"].data[i]["album"].id) {
+                    getAlbumById(json["tracks"].data[i]["album"].id, addAlbumToGrid);
                 }
             }
         }
@@ -128,7 +128,7 @@ function addAlbumToGrid(albumJson, id = generateId()) {
         <div class="album_block">
             <div class="cover_art">
                 <span id="review${id}" class="review_in_tooltip small_text"></span>
-                <img alt="Album Art" src="${albumJson.cover_medium}">                    
+                <img alt="Album Art" src="${albumJson["cover_medium"]}">                    
             </div> 
             <div class="album_info">
                 <div class="star_rating">
@@ -137,11 +137,11 @@ function addAlbumToGrid(albumJson, id = generateId()) {
                 </div>
                 <div class="album_and_artist">
                     <p class="title">${albumJson.title}</p>
-                    <p class="artist">${albumJson.artist.name}</p>
+                    <p class="artist">${albumJson["artist"].name}</p>
                 </div>
                 <div class="grey small_text padding_tm">
                     <p>${albumJson.label}</p>
-                    <p>${albumJson.genres.data[0].name}</p>
+                    <p>${albumJson["genres"].data[0].name}</p>
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@ function getTopTracksChart(number) {
         if (req.readyState === 4 && req.status === 200) {
             let json = JSON.parse(req.responseText);
             for (let i = 0; i < number; i++) {
-                getAlbumById(json.tracks.data[i].album.id, addTrackToChartList, json.tracks.data[i], false);
+                getAlbumById(json["tracks"].data[i]["album"].id, addTrackToChartList, json["tracks"].data[i], false);
             }
         }
     };
@@ -198,16 +198,16 @@ function getTopTracksChart(number) {
 
 function addTrackToChartList(albumJson, trackJson) {
     let label = albumJson.label;
-    let genre = albumJson.genres.data[0].name;
+    let genre = albumJson["genres"].data[0].name;
     document.getElementById("ranked_songs").innerHTML += `
         <div class="ranked_song">
             <div class="image_and_ranking">
                 <h1>${trackJson.position}</h1>
-                <img alt="Album Art" src="${trackJson.album.cover_medium}">
+                <img alt="Album Art" src="${trackJson["album"]["cover_medium"]}">
             </div>
             <div class="title_and_artist">
                 <h2>${trackJson.title}</h2>
-                <h3>${trackJson.artist.name}</h3>
+                <h3>${trackJson["artist"].name}</h3>
             </div>
             <div class="small_text grey">
                 <p>${genre}</p>
@@ -243,7 +243,7 @@ function setTrackById(id, async = true) {
     req.onreadystatechange = function () {
         if (req.readyState === 4 && req.status === 200) {
             let track = JSON.parse(req.responseText);
-            getAlbumById(track.album.id, addFeaturedTrack, track)
+            getAlbumById(track["album"].id, addFeaturedTrack, track)
         }
     };
     req.open("GET", "https://cors-anywhere.herokuapp.com/https://api.deezer.com/track/" + id, async);
@@ -255,34 +255,34 @@ function addFeaturedAlbum(albumJson) {
         <div class="wide_album_focus">
             <div class="featured_album_info">
                 <h2>${albumJson.title}</h2>
-                <h3>${albumJson.artist.name}</h3>  
+                <h3>${albumJson["artist"].name}</h3>  
             </div>
-            <img alt="Full Cover Art" src="${albumJson.cover_xl}">
+            <img alt="Full Cover Art" src="${albumJson["cover_xl"]}">
             <div class="grey small_text">
-                <p>${albumJson.release_date}</p>
+                <p>${albumJson["release_date"]}</p>
                 <p>${Math.round(albumJson.duration / 60)} min</p>
-                <p>${albumJson.genres.data[0].name}</p>
+                <p>${albumJson["genres"].data[0].name}</p>
             </div>
         </div>
     `;
 }
 
 function addFeaturedTrack(albumJson, trackJson) {
-    let releaseDate = albumJson.release_date;
-    let genre = albumJson.genres.data[0].name;
+    let releaseDate = albumJson["release_date"];
+    let genre = albumJson["genres"].data[0].name;
     document.getElementById("featured_songs_grid").innerHTML += `
         <div class="album_block">
             <audio controls>
-                <source src="${trackJson.preview}" type="audio/mpeg">
+                <source src="${trackJson["preview"]}" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio> 
             <div class="cover_art">
-                <img alt="Album Art" src="${albumJson.cover_big}">                    
+                <img alt="Album Art" src="${albumJson["cover_big"]}">                    
             </div>
             <div class="album_info">
                 <div class="album_and_artist">
                     <p class="title">${trackJson.title}</h1>
-                    <p class="artist">${trackJson.artist.name}</h2>
+                    <p class="artist">${trackJson["artist"].name}</h2>
                 </div>
                 <div class="grey small_text padding_tm">
                     <p>${releaseDate}</p>
@@ -299,12 +299,13 @@ function addFeaturedTrack(albumJson, trackJson) {
 //========================================================================================================
 
 function populateCalendar(month = null, year = null) {
+    let date;
     if (month != null && year != null) {
-        let date = new Date(year, month, 0);
+        date = new Date(year, month, 0);
         localStorage['month'] = month;
         localStorage['year'] = year;
     } else {
-        let date = new Date();
+        date = new Date();
         localStorage['month'] = date.getMonth() + 1;
         localStorage['year'] = date.getFullYear();
     }
@@ -320,9 +321,9 @@ function populateCalendar(month = null, year = null) {
         let songs = JSON.parse(storedPlaylist).items;
         for (let i = 0; i < songs.length; i++) {
             let track = songs[i].track;
-            let y = parseInt(track.album.release_date.substr(0, 4));
-            let m = parseInt(track.album.release_date.substr(5, 7)) - 1;
-            let d = parseInt((track.album.release_date).substr(8));
+            let y = parseInt(track["album"]["release_date"].substr(0, 4));
+            let m = parseInt(track["album"]["release_date"].substr(5, 7)) - 1;
+            let d = parseInt(track["album"]["release_date"].substr(8));
             if (y === date.getFullYear() && m === date.getMonth()) {
                 addTrackToCalendar(d, track)
             }
@@ -387,7 +388,7 @@ function getSpotifyToken(callback) {
     let req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (req.readyState === 4 && req.status === 200) {
-            localStorage.setItem('bearer', JSON.parse(req.responseText).access_token);
+            localStorage.setItem('bearer', JSON.parse(req.responseText)["access_token"]);
             callback();
         }
     };
@@ -457,7 +458,7 @@ function addTrackToCalendar(day, track) {
         <div class="song_instance" id="${track.id}" >
             <div class="mini_info" onclick="songFocus('${track.id}')">
                 <div>
-                    <img class="mini_cover" src="${track.album.images[2].url}">
+                    <img alt="Album Cover" class="mini_cover" src="${track["album"].images[2].url}">
                 </div>
                 <div>
                     <h4 class="title">${track.name}</h4>
@@ -486,15 +487,15 @@ function songFocus(id) {
         <div id="large_info" class="large_info">
             <div class="cover_and_audio">
                 <audio controls>
-                    <source src="${track.preview_url}" type="audio/mpeg">
+                    <source src="${track["preview_url"]}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio> 
-                <img class="large_cover" src="${track.album.images[1].url}">
+                <img alt="Album Cover" class="large_cover" src="${track["album"].images[1].url}">
             </div>
             <div>
                 <h3 class="title">${track.name}</h3>
-                <h4>${track.artists[0].name}</h4>
-                <p class="small_text">${Math.round(track.duration_ms / 1000)} s</p>
+                <h4>${track["artists"][0].name}</h4>
+                <p class="small_text">${Math.round(track["duration_ms"] / 1000)} s</p>
             </div>
         </div>
     `;
