@@ -1,0 +1,47 @@
+.ranked_songs {
+    color: whitesmoke;
+    padding-top: 2em;
+}
+
+.ranked_song {
+    max-width: 800px;
+    margin: 0.8em 120px;
+    margin-top: 3px;
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    grid-gap: 1em;
+    /* border-bottom: solid 1px; */
+}
+
+
+.image_and_ranking div {
+    display: grid;
+}
+
+.image_and_ranking img {
+    width: 130px;
+    height: 130px;
+}
+
+.image_and_ranking h1 {
+    text-align: center;
+    height: 90px;
+    width: 80px;
+    color: white;
+    padding: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(255, 0, 102, 0.14);
+    font-size: 5em;
+    position: absolute;
+}
+
+.title_and_artist h2 {
+    font-size: 1.2em;
+}
+
+.title_and_artist h3 {
+    font-size: 0.9em;
+    font-weight: 200;
+}
+

@@ -1,0 +1,25 @@
+.cover_art .review_in_tooltip {
+    visibility: hidden;
+    width: 1fr;
+    background-color: rgba(31, 53, 83, 0.9);
+    color: lightgrey;
+    text-align: center;
+    padding: 5px;
+    margin: 4px;
+    border-radius: 3px;
+    
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+.cover_art:hover .review_in_tooltip {
+    visibility: visible;
+}
+
+.album_blocks {
+    padding-top: 2em;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1em;
+}

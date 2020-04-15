@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;;
+}
+
+html {
+    height: 100%;
+}
+
+.small_text {
+    font-size: 0.7em;
+}
+
+body {
+    display: grid;
+    min-height: 100%;
+    margin-top: 80px;
+    grid-template-rows: 1fr auto;
+    background-color: #1f1f1f;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    display: block;
+    background-color: #1F3553;
+}
+
+#medium {
+    height: 80px;
+}
+
+.inner_header {
+    max-width: 1000px;
+    height: 100%;
+    display: block;
+    margin: 0 auto; /*Centers the inner header horizontaly within page*/
+}
+
+.logo_container {
+    height: 100%;
+    display: table;
+    float: left;
+}
+
+.logo_container img {
+    height: 80px;
+    display: table;
+    float: left;
+}
+
+.logo_container h1 {
+  color: white;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+.logo_container h1 span {
+    font-weight: 800;
+}
+
+nav {
+    float: right;
+    height: 100%
+}
+
+nav a {
+    height: 100%;
+    display: table;
+    float: left;
+    padding: 0px 12px;
+}
+
+nav a li {
+    display: table-cell;    
+    vertical-align: middle;
+    height: 100%;
+    color: white;
+    font-size: 16px;
+}
+
+nav a li:hover {
+    font-weight: 600;
+    color: #FF0064;
+}
+
+.inner_body {
+    flex: 1 0 auto;
+    max-width: 1000px;
+    margin: 10px auto;
+    padding: 4px;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+footer {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    width: 100%;
+    margin-top: 50px;
+    height: 60px;
+    background-color: #121212;
+}
+
+footer a {
+    color: #1F3553;
+}
+
+.inner_footer {
+    color: grey;
+    max-width: 1000px;
+    height: 100%;
+    display: table;
+    margin: 0 auto; /*Centers the inner header horizontaly within page*/
+}
+
+.inner_footer p {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grey {
+    color: rgb(199, 198, 198);
+}
+
+.padding_tm {
+    padding-top: 3px;
+}
+
+.cover_art img {
+    width: 100%;
+}
+
+
+.album_info {
+    padding-top: 0.5em;
+}
+
+.album_info h1 {
+    font-size: 0.8em;
+    color: whitesmoke;
+}
+
+.album_info h2 {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+.album_info .star_rating {
+    color:grey;
+    padding-bottom: 0.3em;
+}
+
+.album_block {
+    display: grid;
+}
+
+.album_block .cover_art {
+    position: relative;
+}
+
+.album_info .rating_visual {
+    font-size: 0.8em;
+    display: cell;
+    vertical-align: middle;
+    color: grey;
+    font-weight: 200;
+}
+
+.album_info .rating_visual span {
+    color: rgb(255, 65, 141);
+    font-weight: 400;
+}
+
+.album_info .rating_text {
+    font-size: 0.8em;
+    font-weight: 200;
+    float: right;
+}

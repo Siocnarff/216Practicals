@@ -1,0 +1,226 @@
+*{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.float_right {
+    float: right;
+}
+
+.loader {
+    animation: spin 1.2s linear infinite;
+    border: 5px solid #121212;
+    border-top: 5px solid rgb(240, 162, 193);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: fixed; 
+    right: 50%;
+    top: 90px; 
+    transform: translate(10px);
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+html {
+    height: 100%;
+}
+
+.small_text {
+    font-size: 0.7em;
+}
+
+body {
+    color: white;
+    background-color: #1f1f1f;
+    display: grid;
+    grid-template-rows: 1fr;
+    margin-top: 110px;
+    min-height: 100%;
+}
+
+header {
+    background-color: #1F3553;
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.medium {
+    height: 80px;
+}
+
+.inner_header {
+    display: block;
+    height: 100%;
+    margin: 0 auto; /*Centers the inner header horizontaly within page*/
+    max-width: 1000px;
+}
+
+.logo_container {
+    display: table;
+    float: left;
+    height: 100%;
+}
+
+.logo_container img {
+    display: table;
+    float: left;
+    height: 80px;
+}
+
+.logo_container h1 {
+  color: white;
+  display: table-cell;
+  font-size: 1.3em;
+  font-weight: 400;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.logo_container h1 span {
+    font-weight: 800;
+}
+
+nav {
+    float: right;
+    height: 100%
+}
+
+nav a {
+    display: table;
+    float: left;
+    height: 100%;
+    padding: 0px 12px;
+}
+
+nav a p {
+    color: white;
+    display: table-cell;    
+    font-size: 16px;
+    height: 100%;
+    vertical-align: middle;
+}
+
+nav a p:hover {
+    color: #FF0064;
+    font-weight: 600;
+}
+
+.inner_body {
+    flex: 1 0 auto;
+    margin: 10px auto;
+    width: 1000px;
+    padding: 4px;
+    height: min-content;
+}
+
+.center {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+footer {
+    background-color: #121212;
+    grid-row-end: 3;
+    grid-row-start: 2;
+    height: 50px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+footer a {
+    color: #1F3553;
+}
+
+footer img {
+    height: 40px;
+    padding: 5px;
+    padding-right: 10px;
+}
+
+.inner_footer {
+    color: grey;
+    display: table;
+    height: 100%;
+    margin: 0 auto; /*Centers the inner header horizontaly within page*/
+    max-width: 1000px;
+}
+
+.inner_footer p {
+    display: table-cell;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+
+.grey {
+    color: rgb(199, 198, 198);
+}
+
+.padding_tm {
+    padding-top: 3px;
+}
+
+.cover_art img {
+    width: 100%;
+}
+
+
+.album_info {
+    padding-top: 0.5em;
+}
+
+.album_info .title {
+    color: whitesmoke;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.album_info .artist {
+    color: whitesmoke;
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+.album_info .star_rating {
+    color:grey;
+    padding-bottom: 0.3em;
+}
+
+.album_block {
+    display: grid;
+}
+
+.cover_art {
+    position: relative;
+}
+
+.album_info .rating_visual {
+    color: grey;
+    display: cell;
+    font-size: 0.8em;
+    font-weight: 200;
+    vertical-align: middle;
+}
+
+.album_info .rating_visual span {
+    color: rgb(255, 65, 141);
+    font-weight: 400;
+}
+
+.album_info .rating_text {
+    float: right;
+    font-size: 0.8em;
+    font-weight: 200;
+}

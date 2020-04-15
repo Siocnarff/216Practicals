@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="P01 for COS216 at UP 2020">
+    <meta name="author" content="Josua Botha (u19138182)">
+    <meta name="keywords" content="music,trending,hottest,hits,UP,COS216,logopond">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/trending.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script type="text/javascript" src="js/script.js"></script>
+    <title>BadLama Music</title>
+</head>
+<body onload="populateTrending(15)">
+    <header class="medium">
+        <div class="inner_header">
+            <a href="../../index.html">
+                <div class="logo_container">
+                    <img alt="llama logo" class="logo" src="images/badlama4.png">
+                    <h1>Bad<span>Lama</span> <br>Music</h1>
+                </div>
+            </a>
+            <nav>
+                <a href="trending.html"><p  style="font-weight: 600; color: #FF0064;">Trending</p></a>
+                <a href="releases.html"><p>New Releases</p></a>
+                <a href="top.html"><p>Top Rated</p></a>
+                <a href="featured.html"><p>Featured</p></a>
+                <a href="calendar.html"><p>Calendar</p></a>  
+                <a href="tour.html"><p>Tour</p></a>        
+            </nav>
+        </div>
+        <div style="display: none" id="loading">
+            <div class="loader"></div>
+        </div>
+    </header>
+    <div class="inner_body">
+        <div id="album_blocks" class="album_blocks_three_wide"></div>
+        <div class="right_column">
+            <div class="page_tools">
+                <div class="search">
+                    <input id="searchTrending" type="search" placeholder="Search" value="">
+                    <button onclick="searchTrending()">
+                        <img alt="Search" src="images/icons/search-white-24px.svg">
+                    </button>                   
+                </div>
+                <div class="filters">
+                    <!-- <p class="small_text grey">Genre</p>
+                    <select class="filter" name="date">
+                        <option value="any" selected>Any</option>
+                        
+                        <option value="Pop">Pop</option>
+                        <option value="Rap">Rap</option>
+                        <option value="R&B">R&B</option>
+                        <option value="Films/Games">Films/Games</option>
+                        <option value="Rap/Hip Hop">Rap/Hip Hop</option>
+                        <option value="Alternative">Alternative</option>
+                        <option value="Reggaeton">Reggaeton</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Jazz">Jazz</option>
+                        <option value="Classical">Classical</option>
+                    </select>
+                    <p class="small_text grey">Release Date</p>
+                    <select class="filter" id="search_date" name="date">
+                        <option value="any" selected>Any</option>
+    
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="older">&lt; 2011</option>
+                    </select> -->
+                    <p class="small_text grey">Search Depth</p>
+                    <select class="filter" id="search_depth" name="date">
+                        <option value="1">1</option>
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="inner_footer">
+            <img alt="" src="images/icons/icn_deezer2.png">
+            <p>Site by Josua Botha u19138182, page powered by <a href="https://www.deezer.com/">Deezer</a>, logo by <a href="https://logopond.com/djuksico/showcase/detail/294207">Djuksico</a></p>
+        </div>
+    </footer>
+</body> 
+</html>

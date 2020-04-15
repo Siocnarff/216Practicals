@@ -1,0 +1,57 @@
+.song_instance {
+    margin-left: 30px;
+}
+
+.song_instance .mini_info {
+    padding: 3px;
+    height: 64px;
+    display: grid;
+    cursor: pointer;
+    grid-template-columns: 1fr 4fr;
+}
+
+.song_instance .large_info {
+    padding: 40px 20px;
+    height: 350px;
+    display: grid;
+    cursor: pointer;
+    grid-template-columns: 2fr 3fr;
+}
+
+.cover_and_audio audio {
+    width: 300px;
+}
+
+.mini_info:hover {
+    background-color: #484848;
+}
+
+.day_instance {
+    padding: 4px;
+    padding-left: 7px;
+    min-height: 50px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.inner_body {
+    padding-left: 10px;
+}
+
+.calendar .calendar_nav {
+    padding: 30px;
+    padding-top: 0px;
+}
+
+button {
+    color: white;
+    background-color: #282828;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+button:hover {
+    padding: 9px;
+    border: 1px grey solid;
+}

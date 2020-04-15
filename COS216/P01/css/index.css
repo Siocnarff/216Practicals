@@ -1,0 +1,33 @@
+.inner_body img {
+    max-width: 1000px;
+    display: table;
+}
+
+.welcome_image h1 {
+    color: yellow;
+}
+
+.welcome_image {
+    position: relative;
+    padding-top: 12px;
+    text-align: center;
+    font-size: 28px;
+}
+
+#larger img {
+    height: 120px;
+}
+
+#large {
+    height: 120px;
+}
+
+body .inner_body {
+    margin-top: 80px;
+}
+
+.logo_container h1 {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+  

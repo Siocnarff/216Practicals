@@ -1,0 +1,85 @@
+.page_tools {
+    float: right;
+    padding: 10px;
+    width: 300px;
+    background-color:#282828;
+    border-radius: 3px;
+    box-shadow: 1px 1px grey;
+}
+
+.page_tools p {
+    padding: 1px;
+    padding-left: 2px;
+}
+
+.page_tools .search {
+    position: relative;
+}
+
+.page_tools .search a {
+    position: absolute;
+    padding: 3px;
+    top: 0px;
+    right: 0px;
+}
+
+.filters {
+    padding-top: 1em;
+}
+
+.filters p {
+    padding-top: 3px;;
+}
+
+.filter {
+    margin: 1px;
+    color: rgb(207, 207, 207);
+    height: 20px;
+    width: 145px;
+}
+
+.filters select {
+    background-color: rgb(182, 182, 182);
+    color: #282828;
+    border-radius: 3px;
+    border-width: 0.5px;
+    border-color: grey;
+}
+
+input[type=text] {
+    background-color: rgb(182, 182, 182);;
+    color: #282828;
+    padding-left: 3px;
+    margin: 1px;
+    height: 25px;
+    width: 294px;
+    border-radius: 3px;
+    border-width: 0.5px;
+    border-color: grey;
+}
+
+input[type=text]::placeholder {
+    color: black    ;
+}
+
+.page_tools {
+    margin-top: 2em;
+}
+
+.album_blocks_two_wide {
+    width: 60%;
+    padding-top: 2em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+}
+
+.release_date_over_album {
+    border-radius: 1px;
+    padding: 5px;
+    color: white;
+    position: absolute;
+    background-color: rgba(31, 53, 83, 0.4);
+    font-size: 0.7em;
+    font-weight: 600;
+}

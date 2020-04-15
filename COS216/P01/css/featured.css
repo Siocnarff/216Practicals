@@ -1,0 +1,58 @@
+.featured_album_info {
+    background-color: rgba(31, 53, 83, 0.4);
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.featured_album_info h2 {
+    font-size: 1.2em;
+}
+
+.featured_album_info h3 {
+    font-size: 0.9em;
+    font-weight: 200;
+}
+
+.wide_album_focus {
+    position: relative;
+    margin-top: 0.5em;
+}
+
+.wide_album_focus img {
+    width: 100%;
+}
+
+.wide_album_focus iframe {
+    width: 100%;
+    height: 235px;
+}
+
+.image_block iframe {
+    width: 100%;
+    height: 400px;
+}
+
+
+.featured_songs_grid {
+    margin-top: 0.5em;;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+}
+
+.featured_songs_grid .image_block img {
+    width: 100%;
+}
+
+#featured_album {
+    margin-top: 3%;
+    color: white;
+}
+
+#featured_songs {
+    color: white;
+    margin-top: 5%;
+}
