@@ -271,13 +271,32 @@ function addFeaturedTrack(albumJson, trackJson) {
     let releaseDate = albumJson["release_date"];
     let genre = albumJson["genres"].data[0].name;
     document.getElementById("featured_songs_grid").innerHTML += `
-        <div class="album_block">
-            <audio controls>
+        <div class="album_block" >
+            <audio id="audio_${trackJson["album"].id}">
                 <source src="${trackJson["preview"]}" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio> 
-            <div class="cover_art">
-                <img alt="Album Art" src="${albumJson["cover_big"]}">                    
+            <div 
+                class="cover_art"
+                onclick="togglePlay(${trackJson["album"].id})" 
+                onmouseover="showIcon(${trackJson["album"].id})"
+                onmouseout="hideIcon(${trackJson["album"].id})"
+            >
+                <img 
+                    style="display: none" 
+                    class="audio_icon" 
+                    id="playIcon_${trackJson["album"].id}"
+                    src="images/icons/pause.png" 
+                    alt="Pause"
+                 >
+                <img 
+                    style="display: none"  
+                    class="audio_icon" 
+                    id="pauseIcon_${trackJson["album"].id}" 
+                    src="images/icons/play.png" 
+                    alt="Play"
+                 >
+                <img alt="Album Art" src="${albumJson["cover_big"]}">  
             </div>
             <div class="album_info">
                 <div class="album_and_artist">
@@ -485,11 +504,30 @@ function songFocus(id) {
     songInstance.getElementsByTagName("div")[0].style.display = "none";
     songInstance.innerHTML += `
         <div id="large_info" class="large_info">
-            <div class="cover_and_audio">
-                <audio controls>
+            <div 
+                class="cover_and_audio"
+                onclick="togglePlay('${id}')" 
+                onmouseover="showIcon('${id}')"
+                onmouseout="hideIcon('${id}')"
+            >
+                <audio id="audio_${id}">
                     <source src="${track["preview_url"]}" type="audio/mpeg">
                     Your browser does not support the audio element.
-                </audio> 
+                </audio>
+                <img 
+                    style="display: none" 
+                    class="audio_icon" 
+                    id="playIcon_${id}"
+                    src="images/icons/pause.png" 
+                    alt="Pause"
+                 >
+                <img 
+                    style="display: block"  
+                    class="audio_icon" 
+                    id="pauseIcon_${id}" 
+                    src="images/icons/play.png" 
+                    alt="Play"
+                 >
                 <img alt="Album Cover" class="large_cover" src="${track["album"].images[1].url}">
             </div>
             <div>
@@ -499,6 +537,50 @@ function songFocus(id) {
             </div>
         </div>
     `;
+}
+
+function togglePlay(id) {
+    let audio = document.getElementById("audio_" + id);
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+    toggleIcon(id)
+}
+
+function toggleIcon(id) {
+    let play = document.getElementById("playIcon_" + id);
+    let pause = document.getElementById("pauseIcon_" + id);
+    if (play.style.display === "none") {
+        pause.style.display = "none";
+        play.style.display = "block";
+    } else {
+        play.style.display = "none";
+        pause.style.display = "block";
+    }
+}
+
+function showIcon(id) {
+    let audio = document.getElementById("audio_" + id);
+    if (audio.paused) {
+        let pause = document.getElementById("pauseIcon_" + id);
+        pause.style.display = "block";
+    } else {
+        let play = document.getElementById("playIcon_" + id);
+        play.style.display = "block";
+    }
+}
+
+function hideIcon(id) {
+    let audio = document.getElementById("audio_" + id);
+    if (audio.paused) {
+        let pause = document.getElementById("pauseIcon_" + id);
+        pause.style.display = "none";
+    } else {
+        let play = document.getElementById("playIcon_" + id);
+        play.style.display = "none";
+    }
 }
 
 function getTrackFromStorage(id) {
