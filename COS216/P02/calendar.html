@@ -14,7 +14,7 @@
 <body onload="storeSpotifyPlaylist()">
     <header class="medium">
         <div class="inner_header">
-            <a href="../../index.html">
+            <a href="featured.html">
                 <div class="logo_container">
                     <img alt="llama logo" class="logo" src="images/badlama4.png">
                     <h1>Bad<span>Lama</span> <br>Music</h1>
@@ -36,9 +36,10 @@
     <div class="inner_body">
         <div class="calendar" id="calendar">
             <div class="calendar_nav">
-                <h1 id="date">Today</h1>
-                <button onclick="popPrevMonth()">&lt;</button><button onclick="popNextMonth()">&gt;</button>
-                <button class="float_right" onclick="gotToToday()">Today</button>
+                <h2 id="full_date">Today</h2>
+                <button class="button" onclick="popPrevMonth()">&lt;</button>
+                <button class="button" onclick="popNextMonth()">&gt;</button>
+                <button class="button float_right" class="float_right" onclick="gotToToday()">Today</button>
             </div>
             <div id="calendar_main"></div>
         </div>

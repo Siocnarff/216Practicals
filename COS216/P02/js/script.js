@@ -270,7 +270,7 @@ function addFeaturedTrack(albumJson, trackJson) {
     let genre = albumJson["genres"].data[0].name;
     document.getElementById("featured_songs_grid").innerHTML += `
         <div class="album_block" >
-            <audio id="audio_${trackJson["album"].id}">
+            <audio id="audio_${trackJson["album"].id}" onended="toggleIcon('${trackJson["album"].id}')">
                 <source src="${trackJson["preview"]}" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio> 
@@ -323,12 +323,14 @@ function populateCalendar(month = null, year = null) {
         localStorage['year'] = year;
     } else {
         date = new Date();
-        localStorage['month'] = date.getMonth() + 1;
+        localStorage['month'] = date.getMonth();
         localStorage['year'] = date.getFullYear();
+        console.log(date.getMonth());
+        console.log(date.getFullYear());
     }
     document.getElementById("calendar_main").innerHTML = "";
-    document.getElementById("date").innerHTML = getMonthName(date.getMonth()) + " " + date.getFullYear();
-    let days = parseInt(getDaysInMonth(date.getMonth(), date.getFullYear()));
+    document.getElementById("full_date").innerHTML = getMonthName(date.getMonth()) + " " + date.getFullYear();
+    let days = parseInt(getDaysInMonth(date.getMonth() + 1, date.getFullYear()));
     for (let i = 0; i < days; i++) {
         addDayToCalendar(i + 1);
     }
@@ -339,9 +341,9 @@ function populateCalendar(month = null, year = null) {
         for (let i = 0; i < songs.length; i++) {
             let track = songs[i].track;
             let y = parseInt(track["album"]["release_date"].substr(0, 4));
-            let m = parseInt(track["album"]["release_date"].substr(5, 7)) - 1;
+            let m = parseInt(track["album"]["release_date"].substr(5, 7));
             let d = parseInt(track["album"]["release_date"].substr(8));
-            if (y === date.getFullYear() && m === date.getMonth()) {
+            if (y === date.getFullYear() && m === date.getMonth() + 1) {
                 addTrackToCalendar(d, track)
             }
         }
@@ -359,8 +361,7 @@ function addPlaylistsToInternalStorage(
     ids = [
         "37i9dQZEVXbmHdDN7MUN7d",
         "37i9dQZF1DWWW9iyuOPGds",
-        "1pMB5VwjH6fzf8ldHch1IG",
-        "593HKP3qHQXS0RLZmeeHly"
+        "2MsGtroclirkNnI6snEoxk"
     ],
     index = 0
 ) {
@@ -465,7 +466,7 @@ function storePlaylist(id, callback) {
 function addDayToCalendar(day) {
     document.getElementById("calendar_main").innerHTML += `
         <div class="day_instance" id="${day}">
-            <h2>${day}</h2>
+            <h2 class="date">${day}</h2>
         </div>
     `;
 }
@@ -508,7 +509,7 @@ function songFocus(id) {
                 onmouseover="showIcon('${id}')"
                 onmouseout="hideIcon('${id}')"
             >
-                <audio id="audio_${id}">
+                <audio id="audio_${id}" onended="toggleIcon('${id}')">
                     <source src="${track["preview_url"]}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
@@ -571,14 +572,10 @@ function showIcon(id) {
 }
 
 function hideIcon(id) {
-    let audio = document.getElementById("audio_" + id);
-    if (audio.paused) {
-        let pause = document.getElementById("pauseIcon_" + id);
-        pause.style.display = "none";
-    } else {
-        let play = document.getElementById("playIcon_" + id);
-        play.style.display = "none";
-    }
+    let pause = document.getElementById("pauseIcon_" + id);
+    pause.style.display = "none";
+    let play = document.getElementById("playIcon_" + id);
+    play.style.display = "none";
 }
 
 function getTrackFromStorage(id) {
@@ -596,19 +593,21 @@ function getTrackFromStorage(id) {
 }
 
 function gotToToday() {
-    let goTo;
+    //let goTo;
     let date = new Date();
     if (date.getFullYear() !== localStorage['year'] || (date.getMonth() + 1) !== localStorage['month']) {
         populateCalendar(date.getMonth() + 1, date.getFullYear());
     }
     let day = (date.getDate()).toString();
-    if (day <= 2) {
+/*    if (day <= 2) {
         goTo = 1;
     } else {
         goTo = day - 2;
-    }
-    window.location.hash = '#' + (goTo);
-    document.getElementById(day).style.backgroundColor = "#383838";
+    }*/
+    let today = document.getElementById(day);
+    today.style.backgroundColor = "#383838";
+    today.scrollIntoView();
+    window.scrollBy(0, -100);
 }
 
 // GLOBAL HELPER FUNCTIONS

@@ -1,0 +1,30 @@
+nav a[href="signup.php"] p {
+    color: #FF0064;
+    font-weight: 600;
+}
+
+.register_form {
+    width: 300px;
+}
+
+.register_form button {
+    margin-top: 20px;
+}
+
+input, label {
+    width : 240px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input {
+    background-color: rgb(182, 182, 182);
+    color: #282828;
+    padding: 3px;
+    margin: 1px 1px 10px;
+    height: 25px;
+    width: 100%;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: grey;
+}

@@ -1,3 +1,12 @@
+#full_date {
+    margin: 10px 0;
+}
+
+.date {
+    margin: 0;
+    padding: 0 0 0 3px;
+}
+
 .song_instance {
     margin-left: 30px;
 }
@@ -42,18 +51,5 @@
 }
 
 .calendar .calendar_nav {
-    padding: 0 30px 30px;
-}
-
-button {
-    color: white;
-    background-color: #282828;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-}
-
-button:hover {
-    padding: 9px;
-    border: 1px grey solid;
+    margin-bottom: 10px;
 }

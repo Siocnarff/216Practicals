@@ -1,0 +1,32 @@
+.inner_body img {
+    display: table;
+    max-width: 1000px;
+}
+
+h1 {
+    color: yellow;
+    font-size: 1.4em;
+}
+
+.welcome_image {
+    font-size: 28px;
+    padding-top: 12px;
+    position: relative;
+    text-align: center;
+}
+
+.large {
+    height: 120px;
+}
+.large img {
+    height: 120px;
+}
+
+body .inner_body {
+    margin-top: 80px;
+}
+
+header {
+    position: absolute;
+}
+  

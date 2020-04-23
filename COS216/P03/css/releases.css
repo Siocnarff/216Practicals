@@ -1,0 +1,28 @@
+nav a[href="releases.php"] p {
+    color: #FF0064;
+    font-weight: 600;
+}
+
+.album_blocks {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.cover_art .review_in_tooltip {
+    background-color: rgb(31, 53, 83);
+    background-color: rgba(31, 53, 83, 0.9);
+    border-radius: 3px;
+    color: lightgrey;
+    margin: 4px;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    visibility: hidden;
+    width: 1fr;
+    z-index: 1;
+}
+
+.cover_art:hover .review_in_tooltip {
+    visibility: visible;
+}

@@ -1,0 +1,60 @@
+nav a[href="calendar.php"] p {
+     color: #FF0064;
+     font-weight: 600;
+}
+
+#full_date {
+    margin: 10px 0;
+}
+
+.date {
+    margin: 0;
+    padding: 0 0 0 3px;
+}
+
+.song_instance {
+    margin-left: 30px;
+}
+
+.song_instance .mini_info {
+    padding: 3px;
+    height: 64px;
+    display: grid;
+    cursor: pointer;
+    grid-template-columns: 1fr 4fr;
+}
+
+.song_instance .large_info {
+    padding: 40px 20px;
+    height: 350px;
+    display: grid;
+    cursor: pointer;
+    grid-template-columns: 2fr 3fr;
+}
+
+.cover_and_audio {
+    cursor: pointer;
+}
+
+.cover_and_audio img {
+    width: 350px;
+}
+
+.mini_info:hover {
+    background-color: #484848;
+}
+
+.day_instance {
+    padding: 4px 4px 4px 7px;
+    min-height: 50px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.inner_body {
+    padding-left: 10px;
+}
+
+.calendar .calendar_nav {
+    margin-bottom: 10px;
+}
