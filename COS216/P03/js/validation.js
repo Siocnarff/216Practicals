@@ -1,41 +1,45 @@
 function validate() {
     let form = document.forms["register"];
-    let name = form["name"].value;
-    let surname = form["surname"].value;
-    let email = form["email"].value;
+    let name = form["name"].value.trim();
+    let surname = form["surname"].value.trim();
+    let email = form["email"].value.trim();
     let password = form["password"].value;
 
     let message = "";
-    if(!validateEmail(email)) {
-        message += "Email address must contain a '@' symbol.\n"
+    if(!validEmail(email)) {
+        return false;
     }
-    if (name.length <= 0 || name.length > 40) {
-        message += "Name must be between 1 and 40 characters in length.\n"
+    if (!validName(name)) {
+        message += "You must enter a name, only alphabetical characters allowed.\n";
     }
-    if (surname.length <= 0 || surname.length > 40) {
-        message += "Surname must be between 1 and 40 characters long.\n"
+    if (!validName(surname)) {
+        message += "You must enter a surname, only alphabetical characters allowed.\n";
     }
-    if(!validatePassword(password)) {
+    if(!validPassword(password)) {
         message += "Password should be longer than 8 characters, contain upper and" +
-            " lower case letters, at least one digit and one symbol.\n"
+            " lower case letters as well as at least one digit and one symbol.\n";
     }
     if(message.length !== 0) {
-        alert("Your form seems to have some errors.\n\n" + message)
+        alert("Your form seems to have some errors.\n\n" + message);
+        return false;
     }
+    return true;
 }
 
-function validateEmail(email) {
+function validEmail(email) {
     let strictRe = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
-    let lenientRe = /^\S+@\S+\.\S+$/;
-    if (strictRe.test(email)) {
-        let yes = confirm("Something looks strange. Are you sure " + email + " is correct?");
-        if(!yes) {
-            return false;
-        }
+    if (!strictRe.test(email)) {
+        return confirm("Woa! Unusual email address detected.\nAre you sure\n" + email + "\nis correct?");
     }
-    return lenientRe.test(email)
+    return true;
 }
 
-function validatePassword() {
-    let re = /
+function validName(name) {
+    let re = /^[a-zA-Z]{1,40}$/;
+    return re.test(name);
+}
+
+function validPassword(password) {
+    let re = /(?=^.{9,}$)((?=.*\w)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[|!"@#$%&\/()?^'\\+\-*]))^.*/;
+    return re.test(password);
 }
