@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <title>BadLama Music</title>
 </head>
-<body onload="populateTopTracks(5)">
+<body>
 <?php
 session_start();
 include_once("header.php");
@@ -29,7 +29,7 @@ function addUser($conn)
     $password = $_POST['password'];
 
     if (validEmail($email) and validName($name) and validName($surname) and validPassword($password)) {
-        if(userExists($conn, $email)) {
+        if (userExists($conn, $email)) {
             echo("<div class='center key_info'><p>User with email $email already exists. <a href='signup.php'>Try Again.</a></p></div>");
             return;
         }
@@ -44,7 +44,8 @@ function addUser($conn)
     }
 }
 
-function createConnection() {
+function createConnection()
+{
     $servername = "localhost";
     $username = "siocnarff";
     $serverPassword = "varkedansniemooi";
@@ -53,7 +54,8 @@ function createConnection() {
     return new mysqli($servername, $username, $serverPassword, $db);
 }
 
-function userExists($conn, $email) {
+function userExists($conn, $email)
+{
     $query = "select IF(exists(select * from User where Email = '$email'), 'TRUE', 'FALSE');";
     return $conn->query($query)->fetch_all()[0][0] == 'TRUE';
 }
