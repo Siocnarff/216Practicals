@@ -20,7 +20,7 @@ include_once("header.php");
         <form
                 name="register"
                 id="register"
-                action="scripts/register.php"
+                action="validate-signup.php"
                 onsubmit="return validate()"
                 method="post"
                 accept-charset="UTF-8"

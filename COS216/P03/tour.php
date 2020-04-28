@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/tour.css">
-    <script type="text/javascript" src="js/script.js"></script>
     <title>BadLama Music</title>
 </head>
 <body>

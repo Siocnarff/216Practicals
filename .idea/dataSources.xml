@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://wheatley.cs.up.ac.za:3306</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="216Local" uuid="bd76aa46-97fc-4122-882e-2634588f8d27">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/u19138182_cos216</jdbc-url>
+    </data-source>
   </component>
 </project>
