@@ -12,13 +12,13 @@
 </head>
 <body>
 <?php
-include_once("header.php");
+include_once("components/header.php");
 ?>
 <div class="inner_body">
     <h1 class="center" style="color: yellow;">Under Construction</h1>
 </div>
 <?php
-include_once("footer.php");
+include_once("components/footer.php");
 ?>
 </body>
 </html>

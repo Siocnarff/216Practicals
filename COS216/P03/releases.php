@@ -13,13 +13,13 @@
 </head>
 <body onload="populateAlbums(7)">
 <?php
-include_once("header.php");
+include_once("components/header.php");
 ?>
 <div class="inner_body">
     <div class="album_blocks" id="album_blocks"></div>
 </div>
 <?php
-include_once("footerDeezer.php");
+include_once("components/footerDeezer.php");
 ?>
 </body>
 </html>

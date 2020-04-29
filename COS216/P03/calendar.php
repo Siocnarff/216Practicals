@@ -13,7 +13,7 @@
 </head>
 <body onload="storeSpotifyPlaylist()">
 <?php
-include_once("header.php");
+include_once("components/header.php");
 ?>
 <div class="inner_body">
     <div class="calendar" id="calendar">
@@ -27,7 +27,7 @@ include_once("header.php");
     </div>
 </div>
 <?php
-include_once("footerSpotify.php");
+include_once("components/footerSpotify.php");
 ?>
 </body>
 </html>

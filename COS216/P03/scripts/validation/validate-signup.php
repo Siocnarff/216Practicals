@@ -2,12 +2,12 @@
 
 function userExists($conn, $email)
 {
-    $stmt = $conn->prepare("select IF(exists(select * from User where Email = ?), 'TRUE', 'FALSE')");
+    $stmt = $conn->prepare("select IF(exists(select * from User where Email = ?), 'T', 'F')");
     $stmt->bind_param('s', $email);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
-    return $result->fetch_all()[0][0] == 'TRUE';
+    return $result->fetch_all()[0][0] == 'T';
 }
 
 function setUserInDB($conn, $name, $surname, $email, $password, $apiKey)

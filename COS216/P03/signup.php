@@ -13,7 +13,7 @@
 </head>
 <body>
 <?php
-include_once("header.php");
+include_once("components/header.php");
 ?>
 <div class="inner_body">
     <div class="register_form center">
@@ -39,6 +39,6 @@ include_once("header.php");
 </div>
 
 <?php
-include_once("footer.php");
+include_once("components/footer.php");
 ?>
 </body>

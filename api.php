@@ -1,11 +1,15 @@
 <?php
 
-include_once "COS216/P03/scripts/config/Database.php";
-include_once "COS216/P03/scripts/validation/KeyValidator.php";
+include_once "COS216/P03/scripts/database/Database.php";
+include_once "COS216/P03/scripts/validation/RequestValidator.php";
 
+$db = Database::getInstance();
+$validator = new RequestValidator($db->connection());
+$user_email = $_POST['user'];
 $key = $_POST['key'];
-$type = $_POST['type'];
-$return = $_POST['return'];
-$user_email = $_POST['user_email'];
 
-echo("$key -- $type -- $return");
+if($validator->validate($user_email, $key)) {
+    echo("This is a valid user");
+} else {
+    echo("Error: APIKey or user email address not valid");
+}

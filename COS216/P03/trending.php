@@ -13,7 +13,7 @@
 </head>
 <body onload="populateTrending(15)">
 <?php
-include_once("header.php");
+include_once("hcomponents/eader.php");
 ?>
 <div class="inner_body">
     <div id="album_blocks" class="album_blocks_three_wide"></div>
@@ -42,7 +42,7 @@ include_once("header.php");
     </div>
 </div>
 <?php
-include_once("footerDeezer.php");
+include_once("components/footerDeezer.php");
 ?>
 </body>
 </html>

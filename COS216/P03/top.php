@@ -13,14 +13,14 @@
 </head>
 <body onload="populateTopTracks(5)">
 <?php
-include_once("header.php");
+include_once("components/header.php");
 ?>
 <div class="inner_body">
     <div id="ranked_songs" class="ranked_songs">
     </div>
 </div>
 <?php
-include_once("footerDeezer.php");
+include_once("components/footerDeezer.php");
 ?>
 </body>
 </html>
