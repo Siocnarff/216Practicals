@@ -20,7 +20,7 @@ include_once("header.php");
         <form
                 name="register"
                 id="register"
-                action="validate-signup.php"
+                action="newlama.php"
                 onsubmit="return validate()"
                 method="post"
                 accept-charset="UTF-8"

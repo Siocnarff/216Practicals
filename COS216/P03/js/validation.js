@@ -10,10 +10,10 @@ function validate() {
         message += "Your email address is not valid";
     }
     if (!validName(name)) {
-        message += "You must enter a name, only alphabetical characters allowed.\n";
+        message += "Your name may only contain alphabetical characters.\n";
     }
     if (!validName(surname)) {
-        message += "You must enter a surname, only alphabetical characters allowed.\n";
+        message += "Your surname may only contain alphabetical characters.\n";
     }
     if(!validPassword(password)) {
         message += "Password should be longer than 8 characters, contain upper and" +

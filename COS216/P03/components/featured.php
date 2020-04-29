@@ -6,9 +6,9 @@
     <meta name="author" content="Josua Botha (u19138182)">
     <meta name="keywords" content="music,featured,UP,COS216,logopond">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/featured.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/featured.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script type="text/javascript" src="../js/script.js"></script>
     <title>BadLama Music</title>
 </head>
 <body onload="populateFeatured()">
