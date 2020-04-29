@@ -11,7 +11,6 @@
 </head>
 <body>
 <?php
-session_start();
 include_once("header.php");
 $conn = createConnection();
 if ($conn->connect_error) {
@@ -63,16 +62,16 @@ function userExists($conn, $email)
 function setUserInDB($conn, $name, $surname, $email, $password, $apiKey)
 {
     $salt = generateRandomKey();
-    $pwdHashed = hash_hmac("sha256", $password . $salt, getPepper(), false);
+    $pwdHashed = hash_hmac("sha256",  $salt . $password, getPepper(), false);
     $user = "insert into User (Name, Surname, Email, Password, Salt, APIKey) values ('$name', '$surname', '$email', '$pwdHashed', '$salt', '$apiKey');";
     return $conn->query($user);
 }
 
 function generateRandomKey()
 {
-    srand(microtime(true));
-    $s = str_shuffle('ABCDEFGHIJKLMNOPabcdefghijklmnop1234567890!@#$%^&*()``?');
-    return hash("sha256", getKeyPepper() . (rand(0, 1000000000000000) . microtime() . $s));
+    //return bin2hex(mcrypt_create_iv(32, MCRYPT_RAND));
+    $crypto_strong = true;
+    return bin2hex(openssl_random_pseudo_bytes(32, $crypto_strong));
 }
 
 function getPepper()
