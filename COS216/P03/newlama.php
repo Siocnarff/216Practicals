@@ -12,35 +12,35 @@
 <body>
 
 <?php
-include_once("components/header.php");
-//echo("Appropriate Cost Found " + findAppropriateCost());
 
-include_once("scripts/database/Database.php");
 include_once("scripts/validation/validate-signup.php");
+include_once("scripts/database/Database.php");
+$db = Database::getInstance();
 
-$conn = Database::getInstance()->connection();
-if ($conn->connect_error) {
+include_once("components/header.php");
+if ($db->connectionIsDead()) {
     echo("<div><h3 class='center'>Could not connect to the database, please try again later.</h3></div>");
 } else {
-    addUser($conn);
+    addUser($db);
 }
 include_once("components/footerDeezer.php");
 
-function addUser($conn)
+function addUser($db)
 {
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $email = strtolower($_POST['email']);
     $password = $_POST['password'];
 
-
     if (validEmail($email) and validName($name) and validName($surname) and validPassword($password)) {
-        if (userExists($conn, $email)) {
+        if ($db->userExists($email)) {
             echo("<div class='center key_info'><p>User $email already exists. <a href='signup.php'>Try Again.</a></p></div>");
             return;
         }
         $apiKey = generateRandomKey();
-        if (setUserInDB($conn, $name, $surname, $email, $password, $apiKey)) {
+        if (setUserInDB($db, $name, $surname, $email, $password, $apiKey)) {
+            session_start();
+            $_SESSION['apiKey'] = $apiKey;
             echo("<div class='center key_info'><h2>Welcome to BadLama, buddy.</h2><p>Your API key is $apiKey</p><p>Don't lose it now, ok?</p></div>");
         } else {
             echo("<div><h2 class='center'>Could Not Register You. <a href='signup.php'>Try Again.</a></h2></div>");
