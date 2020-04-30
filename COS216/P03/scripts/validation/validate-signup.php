@@ -1,11 +1,11 @@
 <?php
 
-include_once("keyfactory.php");
+include_once("keymakers.php");
 
 function setUserInDB($db, $name, $surname, $email, $password, $apiKey)
 {
     $salt = generateRandomKey();
-    $pwdHashed = hashPassword($salt, $password, getPepper("config.conf"));
+    $pwdHashed = hashPassword($salt, $password, getPepper("vault/secret.conf"));
     return $db->insertIntoUser($name, $surname, $email, $pwdHashed, $salt, $apiKey);
 }
 
