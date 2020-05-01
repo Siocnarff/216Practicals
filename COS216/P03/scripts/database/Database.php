@@ -81,4 +81,9 @@ class Database
     {
         return new mysqli($this->servername, $this->username, $this->serverPassword, $this->database);
     }
+
+    function __destruct()
+    {
+        $this->connection->close();
+    }
 }

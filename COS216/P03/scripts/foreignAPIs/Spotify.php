@@ -25,13 +25,14 @@ class Spotify
             'Content-Type: application/x-www-form-urlencoded',
             'Authorization: Basic ' . $this->getSpotifyKey(),
         );
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, 'grant_type=client_credentials');
         curl_setopt($ch,  CURLOPT_HTTPHEADER, $options);
-        curl_exec($ch);
-        $response = json_encode(curl_getinfo($ch));
+        $data = json_decode(curl_exec($ch), true);
+        $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        if($response['http_code'] == 400) {
-            return $response['access_token'];
+        if($responseCode == 200) {
+            return $data['access_token'];
         } else {
             return false;
         }
