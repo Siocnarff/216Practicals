@@ -22,6 +22,15 @@ class Deezer
         return $this->standardizeTrack($track);
     }
 
+    function searchFullTracks($q) {
+        $tracks = $this->search($q);
+        $fullTracks = [];
+        for($i = 0; $i < count($tracks); $i++) {
+            $fullTracks[$i] = $this->track($tracks[$i]['id']);
+        }
+        return $fullTracks;
+    }
+
     private function standardizeTrack($track) {
         return [
             'title' => $track['title'],
@@ -30,9 +39,42 @@ class Deezer
             'album' => $track['album']['title'],
             'duration' => $track['duration'],
             'billRank' => $track['rank'],
-            'release' => $track['release_date'],
+            'release' => $this->standardizeDate($track['release_date']),
             'preview' => $track['preview']
         ];
+    }
+
+    private function standardizeDate($date) {
+        $year = substr($date, 0, 4);
+        $month = substr($date, 5, 2);
+        $day = substr($date, 8, 2);
+        return $this->dropLeadingZeros($day) . " " . $this->getMonthName((int)$month) . " " . $year;
+    }
+
+    private function getMonthName($index) {
+        $names = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
+        return $names[$index];
+    }
+
+    private function dropLeadingZeros($s) {
+        if($s[0] == '0') {
+            return substr($s, 1);
+        } else {
+            return $s;
+        }
     }
 }
 

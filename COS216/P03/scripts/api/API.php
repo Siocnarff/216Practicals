@@ -24,25 +24,26 @@ class API
     }
 
     function handleRequest($request) {
-        $data = [];
         if($request['deezer']) {
-            $tracks = $this->deezer->search($request['title']);
-            for($i = 0; $i < count($tracks); $i++) {
-                $fullTrack = $this->deezer->track($tracks[$i]['id']);
-                if($request['return'] == '*') {
-                    $data[$i] = [$fullTrack];
-                } else {
-                    $partialTrack = [];
-                    for($k = 0; $k < count($request['return']); $k++) {
-                        if($this->validField($request['return'][$k])) {
-                            $partialTrack += [$request['return'][$k] => $fullTrack[$request['return'][$k]]];
-                        } else {
-                            http_response_code(400);
-                            return http_response_code();
-                        }
+            $tracks = $this->deezer->searchFullTracks($request['title']);
+        } else {
+            $tracks = $this->spotify->search($request['title']);
+        }
+        $data = [];
+        for($i = 0; $i < count($tracks); $i++) {
+            if($request['return'] == '*') {
+                $data[$i] = [$tracks[$i]];
+            } else {
+                $partialTrack = [];
+                for($k = 0; $k < count($request['return']); $k++) {
+                    if($this->validField($request['return'][$k])) {
+                        $partialTrack += [$request['return'][$k] => $tracks[$i][$request['return'][$k]]];
+                    } else {
+                        http_response_code(400);
+                        return "your return fields are malformed";
                     }
-                    $data[$i] = $partialTrack;
                 }
+                $data[$i] = $partialTrack;
             }
         }
         return $data;
