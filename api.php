@@ -1,17 +1,14 @@
 <?php
 
 include_once "COS216/P03/scripts/database/Database.php";
-include_once "COS216/P03/scripts/foreignAPIs/Spotify.php";
+include_once "COS216/P03/scripts/api/API.php";
 
 $db = Database::getInstance();
 $request = json_decode(file_get_contents('php://input'), true);
 
 if($db->validSession($request['key'])) {
-    echo("Valid User ");
-    $spotify = Spotify::getInstance();
-    $key = $spotify->getToken();
-    echo($key);
+    $api = API::getInstance();
+    echo json_encode($api->handleRequest($request));
 } else {
-    echo("Error: APIKey or user email address not valid");
+    echo(json_encode("{error: invalid key}"));
 }
-//curl_setopt($ch, CURLOPT_PROXY, "phugeet.cs.up.ac.za:3128");

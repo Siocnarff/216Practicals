@@ -14,6 +14,14 @@ class Database
     private $insertUserStmt;
     private $verifySessionKeyStmt;
 
+    static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
+
     private function __construct()
     {
         $dbConfig = require("config.php");
@@ -40,21 +48,6 @@ class Database
         );
     }
 
-    static function getInstance()
-    {
-        if (self::$instance == null) {
-            self::$instance = new Database();
-        }
-        return self::$instance;
-    }
-
-    function validSession($apiKey)
-    {
-        $this->verifySessionKeyStmt->bind_param("s", $apiKey);
-        $this->verifySessionKeyStmt->execute();
-        return $this->verifySessionKeyStmt->get_result()->fetch_all()[0][0] == 'T';
-    }
-
     function userExists($email)
     {
         $this->userExistsStmt->bind_param('s', $email);
@@ -67,6 +60,13 @@ class Database
     {
         $this->insertUserStmt->bind_param("ssssss", $name, $surname, $email, $pwdHashed, $salt, $apiKey);
         return $this->insertUserStmt->execute();
+    }
+
+    function validSession($apiKey)
+    {
+        $this->verifySessionKeyStmt->bind_param("s", $apiKey);
+        $this->verifySessionKeyStmt->execute();
+        return $this->verifySessionKeyStmt->get_result()->fetch_all()[0][0] == 'T';
     }
 
     function connectionIsDead()

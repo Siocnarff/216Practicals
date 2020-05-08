@@ -3,16 +3,7 @@
 
 class Spotify
 {
-    private static $instance = null;
     private $token;
-
-    static function getInstance()
-    {
-        if (self::$instance == null) {
-            self::$instance = new Spotify();
-        }
-        return self::$instance;
-    }
 
     private function __construct()
     {
@@ -28,6 +19,7 @@ class Spotify
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, 'grant_type=client_credentials');
         curl_setopt($ch,  CURLOPT_HTTPHEADER, $options);
+        //curl_setopt($ch, CURLOPT_PROXY, "phugeet.cs.up.ac.za:3128");
         $data = json_decode(curl_exec($ch), true);
         $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
@@ -38,14 +30,9 @@ class Spotify
         }
     }
 
-
     private function getSpotifyKey()
     {
         return base64_encode(parse_ini_file('vault/key.conf')['spotify']);
-    }
-
-    function getToken() {
-        return $this->token;
     }
 }
 

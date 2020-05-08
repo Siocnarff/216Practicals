@@ -34,8 +34,7 @@ function addUser($db)
 
     if (validEmail($email) and validName($name) and validName($surname) and validPassword($password)) {
         if ($db->userExists($email)) {
-            echo("<div class='center key_info'><p>User $email already exists. <a href='signup.php'>Try Again.</a></p></div>");
-            return;
+            die("<div class='center key_info'><p>User $email already exists. <a href='signup.php'>Try Again.</a></p></div>");
         }
         $apiKey = generateRandomKey();
         if (setUserInDB($db, $name, $surname, $email, $password, $apiKey)) {
@@ -43,14 +42,14 @@ function addUser($db)
             $_SESSION['apiKey'] = $apiKey;
             echo("<div class='center key_info'><h2>Welcome to BadLama, buddy.</h2><p>Your API key is $apiKey</p><p>Don't lose it now, ok?</p></div>");
         } else {
-            echo("<div><h2 class='center'>Could Not Register You. <a href='signup.php'>Try Again.</a></h2></div>");
+            die("<div><h2 class='center'>Could Not Register You. <a href='signup.php'>Try Again.</a></h2></div>");
         }
     } else {
-        echo("<div><h2 class='center'>User Info Is Not Valid. <a href='signup.php'>Try Again.</a></h2></div>");
+        die("<div><h2 class='center'>User Info Is Not Valid. <a href='signup.php'>Try Again.</a></h2></div>");
     }
 }
 
-?>
+?>  
 
 </body>
 </html>
