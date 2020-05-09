@@ -32,7 +32,7 @@ class Spotify
 
     private function getSpotifyKey()
     {
-        return base64_encode(parse_ini_file('vault/key.conf')['spotify']);
+        return base64_encode(parse_ini_file('COS216/vault/key.conf')['spotify']);
     }
 }
 

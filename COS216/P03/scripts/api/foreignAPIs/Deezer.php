@@ -7,7 +7,7 @@ class Deezer
     function search($q) {
         $ch = curl_init("https://api.deezer.com/search?q=$q");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        //curl_setopt($ch, CURLOPT_PROXY, "phugeet.cs.up.ac.za:3128");
+        curl_setopt($ch, CURLOPT_PROXY, "phugeet.cs.up.ac.za:3128");
         $response = json_decode(curl_exec($ch), true);
         curl_close($ch);
         return $response['data'];
@@ -16,7 +16,7 @@ class Deezer
     function track($id) {
         $ch = curl_init("https://api.deezer.com/track/$id");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        //curl_setopt($ch, CURLOPT_PROXY, "phugeet.cs.up.ac.za:3128");
+        curl_setopt($ch, CURLOPT_PROXY, "phugeet.cs.up.ac.za:3128");
         $track = json_decode(curl_exec($ch), true);
         curl_close($ch);
         return $this->standardizeTrack($track);
@@ -40,7 +40,9 @@ class Deezer
             'duration' => $track['duration'],
             'billRank' => $track['rank'],
             'release' => $this->standardizeDate($track['release_date']),
-            'preview' => $track['preview']
+            'preview' => $track['preview'],
+            'rating' => 'n.a.',
+			'genre' => 'n.a.'
         ];
     }
 

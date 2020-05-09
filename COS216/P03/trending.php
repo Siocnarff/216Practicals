@@ -13,7 +13,7 @@
 </head>
 <body onload="populateTrending(15)">
 <?php
-include_once("hcomponents/eader.php");
+include_once("components/header.php");
 ?>
 <div class="inner_body">
     <div id="album_blocks" class="album_blocks_three_wide"></div>
